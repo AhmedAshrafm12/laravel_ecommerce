@@ -28,9 +28,9 @@
             <td>{{ $product->selling_price	 }}</td>
             <td>{{ $product->original_price	 }}</td>
             <td>{{ $product->description }}</td>
-            <td><img width="100px" height="100px" src="{{  asset('assets/uploads/products/'.$product->avatar) }} " alt=""></td>
-            <td><a href="{{ url('delete-product/'.$product->id) }}" class="btn btn-danger">delete</a>
-                <a href="{{ url('edit-product/'.$product->id) }}" class="btn btn-primary">edit</a></td>
+            <td><img width="100px" height="100px" src="/storage/{{  $product->avatar }} " alt=""></td>
+            <td><a href="/product/destroy/{{ $product->id}}" class="btn btn-danger">delete</a>
+                <a href="{{ url('product/'.$product->id.'/edit') }}" class="btn btn-primary">edit</a></td>
             </tr>
             @endforeach
 

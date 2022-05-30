@@ -22,8 +22,8 @@
             <th scope="row">{{ $category->id }}</th>
             <td>{{ $category->name }}</td>
             <td>{{ $category->description }}</td>
-            <td><img width="100px" height="100px" src="{{  asset('assets/uploads/categories/'.$category->file) }} " alt=""></td>
-            <td><a href="{{ url('delete-category/'.$category->id) }}" class="btn btn-danger">delete</a>
+            <td><img width="100px" height="100px" src="/storage/{{ $category->file }}" alt=""></td>
+            <td><a href="/category/destroy/{{ $category->id}}" class="btn btn-danger">delete</a>
                 <a href="{{ url('category/'.$category->id.'/edit') }}" class="btn btn-primary">edit</a></td>
             </tr>
             @endforeach

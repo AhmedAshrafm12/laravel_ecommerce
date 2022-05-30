@@ -22,10 +22,10 @@ my orders
         @foreach ($orders as $order )
         <tr>
             <th scope="row">1</th>
-            <td># {{ $order->trakcking_number }}</td>
+            <td># {{ $order->tracking_number }}</td>
             <td>{{ $order->total }}</td>
             <td>{{ $order->status == 0 ? 'pending' : 'compeleted' }}</td>
-            <td><a class="btn btn-info" href="{{ url('orderview/'.$order->id ) }}">view</a></td>
+            <td><a class="btn btn-info" href="/order/{{ $order->id }}">view</a></td>
           </tr>
         @endforeach
 
@@ -34,12 +34,9 @@ my orders
 </div>
 
 <script>
-
     @if($errors->any())
   window.alert("{{ $errors->first() }}")
     @endif
-
-
  </script>
 
 @endsection

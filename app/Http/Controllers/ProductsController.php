@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\categorie;
-use App\Models\products;
+use App\Models\product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
@@ -16,7 +16,7 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        $products = products::all();
+        $products = product::all();
         return view("admin.products.index",['products'=>$products]);
     }
 
@@ -45,7 +45,7 @@ class ProductsController extends Controller
 
     public function store(Request $req)
     {
-        $prod = new products();
+        $prod = new product();
        if($req->has('avatar')){
            $file = $req->file('avatar');
            $ext=$file->getClientOriginalExtension();
@@ -90,7 +90,7 @@ class ProductsController extends Controller
      */
     public function edit($id)
     {
-        $product = products::find($id);
+        $product = product::find($id);
         return view("admin.products.edit",["product"=>$product]);
     }
 
@@ -103,7 +103,7 @@ class ProductsController extends Controller
      */
     public function update (Request $req, $id)
     {
-        $prod = products::find($id);
+        $prod = product::find($id);
         if($req->has('avatar')){
             $path = 'assets/uploads/products/'.$prod->avatar;
             if(File::exists($path)){
@@ -139,7 +139,7 @@ class ProductsController extends Controller
      */
     public function destroy($id)
     {
-        $product = products::find($id);
+        $product = product::find($id);
         $path = 'assets/uploads/products/'.$product->file;
         if(File::exists($path)){
         File::delete($path);

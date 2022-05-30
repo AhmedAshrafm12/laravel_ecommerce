@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\categoryController;
 use App\Http\Controllers\Admin\dashboardContrller;
 use App\Http\Controllers\Admin\orderController;
+use App\Http\Controllers\admin\productController;
 use App\Http\Controllers\cartController;
 use App\Http\Controllers\checkoutController;
 use App\Http\Controllers\favController;
@@ -40,6 +41,9 @@ Auth::routes();
 
 Route::group(['middleware' => ['auth','isAdmin']], function () {
     Route::resource('category',categoryController::class);
+    Route::resource('product',productController::class);
+    Route::get('/category/destroy/{category}',[categoryController::class,'destroy']);
+    Route::get('/product/destroy/{product}',[productController::class,'destroy']);
     Route::get('/dashboard', [frontendController::class , "index"]);
     // Route::get('/categories', [categoryController::class , "index"]);
     // Route::post('/insert-cat', [categoryController::class , "insert"]);
@@ -47,18 +51,19 @@ Route::group(['middleware' => ['auth','isAdmin']], function () {
     // Route::get('/edit-prod/{id}', [categoryController::class , "edit"]);;
     // Route::post('/update-cat/{id}', [categoryController::class , "update"]);;
     // Route::get('/delete-cat/{id}', [categoryController::class , "destroy"]);;
-    Route::get('/products', [ProductsController::class , "index"]);
-    Route::get('/add-product', [ProductsController::class , "add"]);;
-    Route::post('/insert-product', [ProductsController::class , "store"]);;
-    Route::get('/edit-product/{id}', [ProductsController::class , "edit"]);;
-    Route::post('/update-product/{id}',[ProductsController::class , 'update']);;
-    Route::get('/delete-product/{id}', [ProductsController::class , "destroy"]);;
-    Route::get('/orders', [orderController::class , "index"]);
+    // Route::get('/products', [ProductsController::class , "index"]);
+    // Route::get('/add-product', [ProductsController::class , "add"]);;
+    // Route::post('/insert-product', [ProductsController::class , "store"]);;
+    // Route::get('/edit-product/{id}', [ProductsController::class , "edit"]);;
+    // Route::post('/update-product/{id}',[ProductsController::class , 'update']);;
+    // Route::get('/delete-product/{id}', [ProductsController::class , "destroy"]);;
+    Route::get('order/{order}', [orderController::class , "show"]);
+    Route::get('/order', [orderController::class , "index"]);
     Route::get('/ordersHistory', [orderController::class , "ordersHistory"]);
-    Route::get('orderview/{id}', [orderController::class , "view"]);
-    Route::post('/updateOrder/{id}', [orderController::class , "updateOrder"]);
-    Route::get('/users', [dashboardContrller::class , "index"]);
-    Route::get('userview/{id}', [dashboardContrller::class , "view"]);
+    Route::put('/order/{order}/update', [orderController::class , "update"]);
+    Route::get('/user', [dashboardContrller::class , "index"]);
+    Route::get('/user/{user}', [dashboardContrller::class , "show"]);
+
 });
 
 

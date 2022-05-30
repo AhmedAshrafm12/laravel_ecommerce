@@ -24,7 +24,7 @@ my orders
             <td> {{ $user->name }}</td>
             <td>{{ $user->email }}</td>
             <td>{{ $user->mobile }}</td>
-            <td><a class="btn btn-info" href="{{ url('userview/'.$user->id ) }}">view</a></td>
+            <td><a class="btn btn-info" href="/user/{{ $user->id  }}">view</a></td>
           </tr>
         @endforeach
 

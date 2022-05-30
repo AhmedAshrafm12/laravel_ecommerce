@@ -15,17 +15,17 @@ my orders
           <th scope="col">price</th>
           <th scope="col">status</th>
           <th scope="col">action</th>
-          <a  href="{{ url('orders') }}" class="btn btn-primary">back</a >
+          <a  href="{{ url('order') }}" class="btn btn-primary">back</a >
         </tr>
       </thead>
     <tbody>
         @foreach ($orders as $order )
         <tr>
             <th scope="row">1</th>
-            <td># {{ $order->trakcking_number }}</td>
+            <td># {{ $order->tracking_number }}</td>
             <td>{{ $order->total }}</td>
             <td>{{ $order->status == 0 ? 'pending' : 'compeleted' }}</td>
-            <td><a class="btn btn-info" href="{{ url('orderview/'.$order->id ) }}">view</a></td>
+            <td><a class="btn btn-info" href="/order/{{ $order->id  }}">view</a></td>
           </tr>
         @endforeach
 

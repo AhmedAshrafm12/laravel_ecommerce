@@ -14,8 +14,7 @@ class dashboardContrller extends Controller
     }
 
 
-    public function view($id){
-        $user=User::find($id);
-        return view("admin.users.view",compact("user"));
+    public function show(user $user){
+        return view("admin.users.show",compact("user"));
     }
 }

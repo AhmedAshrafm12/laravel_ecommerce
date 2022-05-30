@@ -24,4 +24,9 @@ class order extends Model
         'payment_id',
         'payment_mood',
     ];
+
+
+    public function items(){
+        return $this->hasMany(orderItem::class);
+    }
 }

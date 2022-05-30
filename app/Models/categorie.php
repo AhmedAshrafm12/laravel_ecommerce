@@ -18,4 +18,8 @@ class categorie extends Model
         'slug',
         'file',
     ];
+
+    public function products(){
+        return $this->hasMany(product::class,'category_id');
+    }
 }

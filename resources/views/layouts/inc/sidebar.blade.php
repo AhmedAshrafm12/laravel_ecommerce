@@ -27,35 +27,35 @@
               <p>add-category</p>
             </a>
           </li>
-          <li class="nav-item  {{ Request::is('products') ? 'active' : '' }}  ">
-            <a class="nav-link" href="{{ url('products') }}">
+          <li class="nav-item  {{ Request::is('product') ? 'active' : '' }}  ">
+            <a class="nav-link" href="{{ url('product') }}">
               <i class="material-icons">sell</i>
               <p>products</p>
             </a>
           </li>
-          <li class="nav-item   {{ Request::is('add-product') ? 'active' : '' }} ">
-              <a class="nav-link" href="{{ url('add-product') }}">
+          <li class="nav-item   {{ Request::is('product/create') ? 'active' : '' }} ">
+              <a class="nav-link" href="{{ url('product/create') }}">
                 <i class="material-icons">add</i>
                 <p>add-product</p>
               </a>
             </li>
 
-            <li class="nav-item   {{ Request::is('orders') ? 'active' : '' }} {{ Request::is('ordersHistory') ? 'active' : '' }}  @isset($order)
-            @if (Request::is('orderview/'.$order->id))
+            <li class="nav-item   {{ Request::is('order') ? 'active' : '' }} {{ Request::is('ordersHistory') ? 'active' : '' }}  @isset($order)
+            @if (Request::is('order/'.$order->id))
             active
             @endif
             @endisset ">
-                <a class="nav-link" href="{{ url('orders') }}">
+                <a class="nav-link" href="{{ url('order') }}">
                   <i class="material-icons">money</i>
                   <p>orders</p>
                 </a>
               </li>
-              <li class="nav-item   {{ Request::is('users') ? 'active' : '' }}   @isset($user)
-              @if (Request::is('userview/'.$user->id))
+              <li class="nav-item   {{ Request::is('user') ? 'active' : '' }}   @isset($user)
+              @if (Request::is('user/'.$user->id))
               active
               @endif
               @endisset ">
-                <a class="nav-link" href="{{ url('users') }}">
+                <a class="nav-link" href="{{ url('user') }}">
                   <i class="material-icons">person</i>
                   <p>users</p>
                 </a>
